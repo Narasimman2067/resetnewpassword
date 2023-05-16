@@ -182,7 +182,7 @@ router.post("/sendpasswordlink",async(req,res)=>{
                 from:"mrbeastyt2067@gmail.com",
                 to:email,
                 subject:"Sending Email For password Reset",
-                text:`This Link Valid For 2 MINUTES https://resetnewpassword-3l2b8k21r-narasimman2067.vercel.app/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`
+                text:`This Link Valid For 2 MINUTES https://resetnewpassword-d0jkhff8i-narasimman2067.vercel.app/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`
             }
 
             transporter.sendMail(mailOptions,(error,info)=>{
