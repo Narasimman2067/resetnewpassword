@@ -24,7 +24,7 @@ import authenticate from "../middleware/authenticate.js";
 const transporter = nodemailer.createTransport({
     service:"gmail",
     auth:{
-        user:"mrbeastyt2067@gmail.com",
+        user:"narasimmamech2067@gmail.com",
         pass:"12345678"
     }
 }) 
@@ -179,7 +179,7 @@ router.post("/sendpasswordlink",async(req,res)=>{
 
         if(setusertoken){
             const mailOptions = {
-                from:"mrbeastyt2067@gmail.com",
+                from:"narasimmamech2067@gmail.com",
                 to:email,
                 subject:"Sending Email For password Reset",
                 text:`This Link Valid For 2 MINUTES https://resetnewpassword.vercel.app/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`
