@@ -24,8 +24,8 @@ import authenticate from "../middleware/authenticate.js";
 const transporter = nodemailer.createTransport({
     service:"gmail",
     auth:{
-        user:"narasimmamech2067@gmail.com",
-        pass:"rnazejpobrpqoviq"
+        user:"mrbeastyt2067@gmail.com",
+        pass:"12345678"
     }
 }) 
 const keysecret ="hweeefldkoihwoeuojnckjcmnsklk"
@@ -160,7 +160,7 @@ router.get("/logout",authenticate,async(req,res)=>{
 router.post("/sendpasswordlink",async(req,res)=>{
     console.log(req.body)
 
-    const {email} = req.body;
+    const {email} = req.body; 
 
     if(!email){
         res.status(401).json({status:401,message:"Enter Your Email"})
@@ -179,7 +179,7 @@ router.post("/sendpasswordlink",async(req,res)=>{
 
         if(setusertoken){
             const mailOptions = {
-                from:{email},
+                from:"mrbeastyt2067@gmail.com",
                 to:email,
                 subject:"Sending Email For password Reset",
                 text:`This Link Valid For 2 MINUTES http://localhost:3001/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`
