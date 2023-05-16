@@ -164,13 +164,13 @@ router.post("/sendpasswordlink",async(req,res)=>{
         res.status(401).json({status:401,message:"Enter Your Email"})
     }
     try {
-        const userfind = await userdb.findOne({email:email});
+        const userfind = await users.findOne({email:email});
         // token generate for reset password
         const token = jwt.sign({_id:userfind._id},keysecret,{
             expiresIn:"120s"
         });
         
-        const setusertoken = await userdb.findByIdAndUpdate({_id:userfind._id},{verifytoken:token},{new:true});
+        const setusertoken = await users.findByIdAndUpdate({_id:userfind._id},{verifytoken:token},{new:true});
         if(setusertoken){
             const mailOptions = {
                 from:'narasimmamech2067@gmail.com',
