@@ -173,10 +173,10 @@ router.post("/sendpasswordlink",async(req,res)=>{
         const setusertoken = await userdb.findByIdAndUpdate({_id:userfind._id},{verifytoken:token},{new:true});
         if(setusertoken){
             const mailOptions = {
-                from:process.env.EMAIL,
+                from:'narasimmamech2067@gmail.com',
                 to:email,
                 subject:"Sending Email For password Reset",
-                text:`This Link Valid For 2 MINUTES http://localhost:3001/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`
+                text:`This Link Valid For 2 MINUTES http://localhost:8000/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`
             }
             transporter.sendMail(mailOptions,(error,info)=>{
                 if(error){
