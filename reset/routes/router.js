@@ -189,6 +189,7 @@ router.post("/sendpasswordlink",async(req,res)=>{
             })
         }
     } catch (error) {
+        console.log(error)
         res.status(401).json({status:401,message:"invalid user"})
     }
 });
