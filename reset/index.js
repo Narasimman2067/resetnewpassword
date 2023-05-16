@@ -29,6 +29,11 @@ try {
   console.log("mongoose disconnected", error);
 }
 
+
+app.get("/",(req,res)=>{
+res.send("Welcome to our ResetPassword App")
+})
+
 app.listen(PORT, () => {
   console.log(`${PORT} is connected succesfully`);
 });
