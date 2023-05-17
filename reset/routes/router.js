@@ -24,8 +24,8 @@ import authenticate from "../middleware/authenticate.js";
 const transporter = nodemailer.createTransport({
     service:"gmail",
     auth:{
-        user:"narasimmamech2067@gmail.com",
-        pass:"rnazejpobrpqoviq"
+        user:"mrbeastyt2067@gmail.com",
+        pass:"mvmjdsewepvdjzuo"
     }
 }) 
 const keysecret ="hweeefldkoihwoeuojnckjcmnsklk"
@@ -57,7 +57,7 @@ router.post("/register", async (req, res) => {
 
             const storeData = await finalUser.save();
 
-            // console.log(storeData);
+           
             res.status(201).json({ status: 201, storeData })
         }
 
@@ -158,7 +158,7 @@ router.get("/logout",authenticate,async(req,res)=>{
 
 // send email Link For reset Password
 router.post("/sendpasswordlink",async(req,res)=>{
-    console.log(req.body)
+   
 
     const {email} = req.body;
 
@@ -168,6 +168,7 @@ router.post("/sendpasswordlink",async(req,res)=>{
 
     try {
         const userfind = await users.findOne({email:email});
+        
 
         // token generate for reset password
         const token = jwt.sign({_id:userfind._id},keysecret,{
@@ -179,10 +180,10 @@ router.post("/sendpasswordlink",async(req,res)=>{
 
         if(setusertoken){
             const mailOptions = {
-                from:{email},
+                from:"mrbeastyt2067@gmail.com",
                 to:email,
                 subject:"Sending Email For password Reset",
-                text:`This Link Valid For 2 MINUTES http://localhost:3001/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`
+                text:`This Link Valid For 2 MINUTES http://localhost:3000/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`
             }
 
             transporter.sendMail(mailOptions,(error,info)=>{
@@ -214,7 +215,7 @@ router.get("/forgotpassword/:id/:token",async(req,res)=>{
         
         const verifyToken = jwt.verify(token,keysecret);
 
-        console.log(verifyToken)
+        
 
         if(validuser && verifyToken._id){
             res.status(201).json({status:201,validuser})

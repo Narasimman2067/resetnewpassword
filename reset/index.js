@@ -29,9 +29,15 @@ try {
   console.log("mongoose disconnected", error);
 }
 
+
+
+
 app.get("/",(req,res)=>{
   res.send("welcome and reset your password")
 })
+
+
+
 
 app.listen(PORT, () => {
   console.log(`${PORT} is connected succesfully`);
