@@ -18,16 +18,16 @@ const PORT = process.env.PORT;
 
 // database connection
 
-mongoose.connect(process.env.DATABASE);
-try {
-  if (mongoose.connect) {
-    console.log("mongoose connected succesfully");
-  } else {
-    console.log("mongooose is not connected");
-  }
-} catch (error) {
-  console.log("mongoose disconnected", error);
-}
+    const params={
+        useNewUrlParser:true,
+        useUnifiedTopology:true,
+    };
+    try {
+        mongoose.connect(process.env.DATABASE,params);
+        console.log("Database is connected");
+    } catch (error) {
+        console.log(error);
+    }
 
 
 
